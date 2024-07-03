@@ -28,7 +28,7 @@ function Login() {
       if (user) {
         setMessage('Login successful! Redirecting...');
         setTimeout(() => {
-          navigate('/Main');
+          navigate('/main');
         }, 2000);
       } else {
         setMessage('');
