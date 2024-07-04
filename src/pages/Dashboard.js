@@ -2,7 +2,7 @@ import { Box, Typography } from '@mui/material'
 import React from 'react'
 import Sidebar from '../components/Layout/Sidebar'
 import { DataGrid } from '@mui/x-data-grid';
-import SaveIcon from '@mui/icons-material/Save';
+import AddStudent from '../components/AddStudent';
 
 const columns = [
     { field: 'id', headerName: 'ID', width: 90 },
@@ -59,13 +59,14 @@ function Dashboard() {
             <Box sx={{ display: "flex", backgroundColor: '#fafafa' }}>
                 <Sidebar />
             
-                <Box component="main" sx={{ flexGrow: 1, p: 3, marginTop: "55px", backgroundColor: '#fafafa' }}>
+                <Box component="main" sx={{ flexGrow: 1, p: 1, marginTop: "85px", backgroundColor: '#fafafa' }}>
                     <Typography variant='h4'>
                         Dashboard Side
                     </Typography>
                     <Box sx={{ height: '800px', width: '95%', marginTop: '50px' }}>
                         <div className='bg-light rounded-2 border'>
-                            <button className='rounded-2 m-1 p-2'><SaveIcon /></button>
+                            <AddStudent/>
+                            
                         <DataGrid
                             rows={rows}
                             columns={columns}
