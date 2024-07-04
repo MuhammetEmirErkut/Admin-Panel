@@ -12,14 +12,8 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import SettingsIcon from '@mui/icons-material/Settings';
-import RecentActorsIcon from '@mui/icons-material/RecentActors';
-import AccountBoxIcon from '@mui/icons-material/AccountBox';
-import { useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import SidebarElements from './SidebarElements';
 
 const drawerWidth = 240;
 
@@ -133,72 +127,7 @@ export default function Sidebar() {
                     </IconButton>
                 </DrawerHeader>
                 <Divider />
-                <List>
-
-                    <ListItem disablePadding sx={{ display: 'block' }} onClick={() => {navigate('/main')}}>
-                        <ListItemButton
-                            sx={{
-                                minHeight: 48,
-                                justifyContent: open ? 'initial' : 'center',
-                                px: 2.5,
-                            }}
-                        >
-                            <ListItemIcon
-                                sx={{
-                                    minWidth: 0,
-                                    mr: open ? 3 : 'auto',
-                                    justifyContent: 'center',
-                                }}
-                            >
-                            <RecentActorsIcon/>
-                            </ListItemIcon>
-                            <ListItemText primary="Student List" sx={{ opacity: open ? 1 : 0 }} />
-                        </ListItemButton>
-                    </ListItem>
-
-                    <ListItem disablePadding sx={{ display: 'block' }} onClick={() => {navigate('/settings')}}>
-                        <ListItemButton
-                            sx={{
-                                minHeight: 48,
-                                justifyContent: open ? 'initial' : 'center',
-                                px: 2.5,
-                            }}
-                        >
-                            <ListItemIcon
-                                sx={{
-                                    minWidth: 0,
-                                    mr: open ? 3 : 'auto',
-                                    justifyContent: 'center',
-                                }}
-                            >
-                            <SettingsIcon/>
-                            </ListItemIcon>
-                            <ListItemText primary="Settings" sx={{ opacity: open ? 1 : 0 }} />
-                        </ListItemButton>
-                    </ListItem>
-
-                    <ListItem disablePadding sx={{ display: 'block' }} onClick={() => {navigate('/profile')}}> 
-                        <ListItemButton
-                            sx={{
-                                minHeight: 48,
-                                justifyContent: open ? 'initial' : 'center',
-                                px: 2.5,
-                            }}
-                        >
-                            <ListItemIcon
-                                sx={{
-                                    minWidth: 0,
-                                    mr: open ? 3 : 'auto',
-                                    justifyContent: 'center',
-                                }}
-                            >
-                            <AccountBoxIcon/>
-                            </ListItemIcon>
-                            <ListItemText primary="Profile" sx={{ opacity: open ? 1 : 0 }} />
-                        </ListItemButton>
-                    </ListItem>
-
-                </List>
+                <SidebarElements open={open}/>
                 <Divider />
             </Drawer>
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
