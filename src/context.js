@@ -1,6 +1,7 @@
 import React, { useReducer, useContext, createContext } from 'react';
 
 const UserContext = createContext();
+const StudentContext = createContext();
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -9,11 +10,18 @@ const reducer = (state, action) => {
                 ...state,
                 users: [...state.users, action.payload]
             };
+
+        case "ADD_STUDENT":
+            return {
+                ...state,
+                students: [...state.students, action.payload]
+            };
+
         default:
             return state;
     }
 };
-
+//Providers
 const UserProvider = ({ children }) => {
     const initialState = {
         users: []
@@ -28,6 +36,20 @@ const UserProvider = ({ children }) => {
     );
 };
 
+const StudentProvider = ({ children }) => {
+    const initialState = {
+        students: []
+    };
+
+    const [state, dispatch] = useReducer(reducer, initialState);
+
+    return (
+        <StudentContext.Provider value={{ state, dispatch }}>
+            {children}
+        </StudentContext.Provider>
+    );
+}
+
 const useUser = () => {
     const context = useContext(UserContext);
     if (context === undefined) {
@@ -36,4 +58,13 @@ const useUser = () => {
     return context;
 };
 
+const useStudent = () => {
+    const context = useContext(StudentContext);
+    if (context === undefined) {
+        throw new Error("useStudent must be used within a StudentProvider");
+    }
+    return context;
+}
+
 export { UserProvider, useUser };
+export { StudentProvider, useStudent };
