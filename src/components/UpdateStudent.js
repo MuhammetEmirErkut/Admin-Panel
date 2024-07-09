@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
 import axios from 'axios';
 import * as Yup from 'yup';
 import { Formik, Form, Field } from 'formik';
+import { LoadingButton } from '@mui/lab';
+import Alert from '@mui/material/Alert';
+import CheckIcon from '@mui/icons-material/Check';
 
 const validationSchema = Yup.object({
     firstName: Yup.string().required("First Name is required"),
@@ -14,11 +17,21 @@ const validationSchema = Yup.object({
 });
 
 const UpdateStudent = ({ student, handleClose, handleUpdateGrid }) => {
+    const [loading, setLoading] = useState(false);
+    const [success, setSuccess] = useState(false);
+
     const handleUpdate = async (values) => {
+        setLoading(true);
         try {
-            await axios.put(`http://localhost:3000/students/${student.id}`, values);
+            await axios.put(`${process.env.REACT_APP_API_URL}/students/${student.id}`, values);
             handleUpdateGrid();
-            handleClose();
+            setSuccess(true);
+            setTimeout(() => {
+                setLoading(false)
+                setSuccess(false);
+                handleClose();
+            }, 2000);
+
         } catch (error) {
             console.error('Error updating student:', error);
         }
@@ -43,29 +56,31 @@ const UpdateStudent = ({ student, handleClose, handleUpdateGrid }) => {
                 <Dialog open={true} onClose={handleClose}>
                     <DialogTitle>Update Student</DialogTitle>
                     <Form onSubmit={handleSubmit}>
+                        {success && (
+                            <Alert variant="filled" severity="success">
+                                Student updated successfully!
+                            </Alert>
+                        )}
                         <DialogContent>
                             {fields.map((field) => (
                                 <Field
+                                    as={TextField}
                                     key={field.name}
                                     name={field.name}
                                     type={field.type}
+                                    {...field}
+                                    margin="dense"
+                                    label={field.label}
+                                    fullWidth
+                                    error={touched[field.name] && Boolean(errors[field.name])}
+                                    helperText={touched[field.name] && errors[field.name]}
                                 >
-                                    {({ field }) => (
-                                        <TextField
-                                            {...field}
-                                            margin="dense"
-                                            label={field.name}
-                                            fullWidth
-                                            error={touched[field.name] && Boolean(errors[field.name])}
-                                            helperText={touched[field.name] && errors[field.name]}
-                                        />
-                                    )}
                                 </Field>
                             ))}
                         </DialogContent>
                         <DialogActions>
                             <Button onClick={handleClose}>Cancel</Button>
-                            <Button type="submit" color="primary">Update</Button>
+                            <LoadingButton loading={loading} type="submit" color="primary">Update</LoadingButton>
                         </DialogActions>
                     </Form>
                 </Dialog>

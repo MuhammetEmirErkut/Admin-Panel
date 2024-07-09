@@ -7,32 +7,46 @@
       "department": "health",
       "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
       "id": 1
+    },
+    {
+      "name": "Yasin",
+      "surname": "Kobuz",
+      "nickname": "yasin.kobuz",
+      "department": "health",
+      "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+      "id": 2
     }
   ],
   "students": [
     {
-      "firstName": "Hohoh",
-      "lastName": "Doe",
-      "age": 20,
-      "id": 1
-    },
-    {
       "firstName": "Emir",
       "lastName": "Erkut",
-      "age": 21,
+      "age": 28,
       "id": 2
     },
     {
-      "firstName": "Kuzu",
-      "lastName": "Kulak",
-      "age": "5",
+      "firstName": "Emre",
+      "lastName": "Zakir",
+      "age": 33,
       "id": 3
     },
     {
-      "firstName": "Dana",
-      "lastName": "Bonfile",
-      "age": 12,
+      "firstName": "Yusuf",
+      "lastName": "Ali",
+      "age": 53,
       "id": 4
+    },
+    {
+      "firstName": "Onur",
+      "lastName": "Doğramacı ",
+      "age": 32,
+      "id": 5
+    },
+    {
+      "firstName": "kasım ",
+      "lastName": "adalan",
+      "age": 23,
+      "id": 6
     }
   ]
 }

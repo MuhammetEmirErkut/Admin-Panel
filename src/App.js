@@ -1,9 +1,8 @@
 import './App.css';
 import { UserProvider } from './context';
 import Login from './pages/Login';
-import Main from './pages/Main';
 import Settings from './pages/Settings';
-import Profile from './pages/Profile';
+import Profile from './profile/Profile';
 import SignIn from './pages/SignIn';
 import {
   BrowserRouter,
@@ -37,10 +36,10 @@ function App() {
 
   );
 }
-function Register(){
-  return(
+function Register() {
+  return (
     <>
-      <Login/>
+      <Login />
     </>
   )
 }

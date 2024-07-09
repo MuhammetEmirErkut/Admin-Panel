@@ -14,7 +14,6 @@ const SidebarElements = ({ open }) => {
         { text: 'Student List', icon: <RecentActorsIcon />, path: '/main' },
         { text: 'Settings', icon: <SettingsIcon />, path: '/settings' },
         { text: 'Profile', icon: <AccountBoxIcon />, path: '/profile' },
-        { text: 'Profile', icon: <AccountBoxIcon />, path: '/profile' },
     ];
 
     return (
