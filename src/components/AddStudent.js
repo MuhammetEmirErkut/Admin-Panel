@@ -28,7 +28,7 @@ const AddStudent = ({ handleUpdateGrid }) => {
         console.log('Submitting student:', addStudent);
 
         try {
-            const response = await axios.post('http://localhost:3000/students', addStudent);
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/students`, addStudent);
             console.log('Response:', response);
             dispatch({ type: "ADD_STUDENT", payload: response.data });
             handleUpdateGrid();

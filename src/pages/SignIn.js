@@ -31,7 +31,7 @@ const SignIn = () => {
       password: hashedPassword 
     };
     try {
-      const response = await axios.post('http://localhost:3000/users', registerUser);
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/users/`, registerUser);
       dispatch({ type: "REGISTER_USER", payload: response.data });
       navigate('/login');
     } catch (error) {
