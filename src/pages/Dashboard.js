@@ -18,8 +18,9 @@ const Dashboard = () => {
 
     const handleUpdateGrid = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/students');
+            const response = await axios.get(`${process.env.REACT_APP_API_URL}/students/`);
             setRows(response.data);
+            console.log(response.data);
         } catch (error) {
             console.error('Error fetching data:', error);
         }
@@ -28,7 +29,8 @@ const Dashboard = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/students');
+                console.log(process.env.REACT_APP_API_URL);
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/students`);
                 console.log(response.data);  // API verilerini kontrol et
                 setRows(response.data);
                 setLoading(false);
@@ -44,7 +46,7 @@ const Dashboard = () => {
     const handleDelete = async () => {
         try {
             await Promise.all(
-                selectedIds.map(id => axios.delete(`http://localhost:3000/students/${id}`))
+                selectedIds.map(id => axios.delete(`${process.env.REACT_APP_API_URL}/students/${id}`))
             );
             handleUpdateGrid();
             setSelectedIds([]);
