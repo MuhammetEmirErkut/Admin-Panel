@@ -5,7 +5,6 @@ import * as Yup from 'yup';
 import { Formik, Form, Field } from 'formik';
 import { LoadingButton } from '@mui/lab';
 import Alert from '@mui/material/Alert';
-import CheckIcon from '@mui/icons-material/Check';
 
 const validationSchema = Yup.object({
     firstName: Yup.string().required("First Name is required"),

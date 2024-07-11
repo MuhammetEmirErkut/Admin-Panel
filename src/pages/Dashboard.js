@@ -3,7 +3,7 @@ import { Box, Typography, Button } from '@mui/material';
 import Sidebar from '../components/Layout/Sidebar';
 import { DataGrid } from '@mui/x-data-grid';
 import AddStudent from '../components/AddStudent';
-import { StudentProvider } from '../context';
+import { StudentProvider } from '../context/context.js';
 import axios from 'axios';
 import UpdateStudent from '../components/UpdateStudent';
 //Icons mui

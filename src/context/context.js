@@ -1,7 +1,12 @@
 import React, { useReducer, useContext, createContext } from 'react';
+import axios from 'axios';
 
 const UserContext = createContext();
 const StudentContext = createContext();
+
+const initialState = {
+    user: null, // or your initial user state
+};
 
 const reducer = (state, action) => {
     switch (action.type) {
@@ -16,6 +21,8 @@ const reducer = (state, action) => {
                 ...state,
                 students: [...state.students, action.payload]
             };
+            case 'SET_USER':
+            return { ...state, user: action.payload };
 
         default:
             return state;
@@ -23,14 +30,24 @@ const reducer = (state, action) => {
 };
 //Providers
 const UserProvider = ({ children }) => {
-    const initialState = {
-        users: []
-    };
-
     const [state, dispatch] = useReducer(reducer, initialState);
 
+    React.useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const response = await axios.get(`${process.env.REACT_APP_API_URL}/currentUser/`);
+                dispatch({ type: 'SET_USER', payload: response.data });
+                console.log(response.data)
+            } catch (error) {
+                console.error('Current user info ERROR:  ', error);
+            }
+        };
+
+        fetchUser();
+    }, []);
+
     return (
-        <UserContext.Provider value={{ state, dispatch }}>
+        <UserContext.Provider value={{ user: state.user, dispatch }}>
             {children}
         </UserContext.Provider>
     );

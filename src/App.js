@@ -1,5 +1,5 @@
 import './App.css';
-import { UserProvider } from './context';
+import { UserProvider } from './context/context.js';
 import Login from './pages/Login';
 import Settings from './pages/Settings';
 import Profile from './profile/Profile';

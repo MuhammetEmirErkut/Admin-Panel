@@ -3,7 +3,7 @@ import TextField from '@mui/material/TextField';
 import SaveIcon from '@mui/icons-material/Save';
 import * as Yup from 'yup';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { useStudent } from '../context';
+import { useStudent } from '../context/context.js';
 import axios from 'axios';
 
 const validationSchema = Yup.object({

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useUser } from '../context';
+import { useUser } from '../context/context.js';
 import '../bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
@@ -13,7 +13,8 @@ const validationSchema = Yup.object({
   nickname: Yup.string().required("* Required field"),
   department: Yup.string().required("* Required field"),
   password: Yup.string().required("* Required field"),
-  confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], '* Passwords must match').required('* Required field')
+  confirmPassword: Yup.string().oneOf([Yup.ref('password'), null],
+   '* Passwords must match').required('* Required field')
 });
 
 const SignIn = () => {
