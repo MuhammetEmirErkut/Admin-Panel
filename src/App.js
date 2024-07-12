@@ -1,7 +1,7 @@
 import './App.css';
 import { UserProvider } from './context/context.js';
 import Login from './pages/Login';
-import Settings from './pages/Settings';
+import AgeChart from './pages/AgeChart';
 import Profile from './profile/Profile';
 import SignIn from './pages/SignIn';
 import {
@@ -25,7 +25,7 @@ function App() {
                 <Route path='/signin/*' element={<SignIn />}></Route>
                 {/* <Route path='/main/*' element={<Main />}></Route> */}
                 <Route path='/main/*' element={<Dashboard />}></Route>
-                <Route path='/settings/*' element={<Settings />}></Route>
+                <Route path='/agechart/*' element={<AgeChart />}></Route>
                 <Route path='/profile/*' element={<Profile />}></Route>
               </Routes>
             </UserProvider>

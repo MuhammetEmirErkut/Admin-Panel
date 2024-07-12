@@ -30,21 +30,11 @@ const reducer = (state, action) => {
 };
 //Providers
 const UserProvider = ({ children }) => {
+    const initialState = {
+        users: []
+    };
+    
     const [state, dispatch] = useReducer(reducer, initialState);
-
-    React.useEffect(() => {
-        const fetchUser = async () => {
-            try {
-                const response = await axios.get(`${process.env.REACT_APP_API_URL}/currentUser/`);
-                dispatch({ type: 'SET_USER', payload: response.data });
-                console.log(response.data)
-            } catch (error) {
-                console.error('Current user info ERROR:  ', error);
-            }
-        };
-
-        fetchUser();
-    }, []);
 
     return (
         <UserContext.Provider value={{ user: state.user, dispatch }}>

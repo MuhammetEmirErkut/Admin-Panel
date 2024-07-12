@@ -1,9 +1,10 @@
 import React from 'react';
 import { List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
 import RecentActorsIcon from '@mui/icons-material/RecentActors';
-import SettingsIcon from '@mui/icons-material/Settings';
+import BarChartIcon from '@mui/icons-material/BarChart';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import { useNavigate } from 'react-router-dom';
+
 
 
 const SidebarElements = ({ open }) => {
@@ -12,7 +13,7 @@ const SidebarElements = ({ open }) => {
     // Sidebar için liste öğeleri
     const sidebarItems = [
         { text: 'Student List', icon: <RecentActorsIcon />, path: '/main' },
-        { text: 'Settings', icon: <SettingsIcon />, path: '/settings' },
+        { text: 'Age Charts', icon: <BarChartIcon />, path: '/agechart' },
         { text: 'Profile', icon: <AccountBoxIcon />, path: '/profile' },
     ];
 
