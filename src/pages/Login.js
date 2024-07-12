@@ -26,6 +26,9 @@ function Login() {
       );
 
       if (user) {
+        // Store user data in local storage
+        localStorage.setItem('user', JSON.stringify(user));
+
         setMessage('Login successful! Redirecting...');
         setTimeout(() => {
           navigate('/main');
@@ -48,7 +51,7 @@ function Login() {
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
-      {({ handleSubmit, handleChange, values, errors, isSubmitting }) => ( // ?
+      {({ handleSubmit, handleChange, values, errors, isSubmitting }) => (
         <div className="container d-flex justify-content-center align-items-center vh-100">
           <div className="card" style={{ width: "400px" }}>
             <div className="card-header text-center">

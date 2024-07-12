@@ -57,7 +57,7 @@ const AddStudent = ({ handleUpdateGrid }) => {
                         <Field
                             key={field.name}
                             as={TextField}
-                            className='m-1 p-1'
+                            className='m-1 mr-4'
                             id={field.name}
                             name={field.name}
                             label={field.label}
